@@ -1,0 +1,170 @@
+@use "fonts";
+@use "vars";
+@use "mixin" as *;
+@use "media" as *;
+
+.footer-main {
+    background-color: vars.$dark-color;
+    &.simple-section {
+        padding-bottom: 40px;
+    }
+    &__subtitle {
+        color: vars.$secondary-color;
+        margin-bottom: 30px;
+        @include desktop-sm {
+            margin-bottom: 40px;
+        }
+        @include desktop-xl {
+            margin-bottom: 60px;
+        }
+    }
+    &__row {
+       h3 {
+        color: vars.$accent-color;
+        margin-bottom: 20px;
+        @include desktop-xl {
+            margin-bottom: 40px;
+        }
+        } 
+    }
+    &__map {
+        width: 100%;
+        height: 300px;
+        border-radius: vars.$radius-simple-mobile;
+        border-top-left-radius: 0;
+        overflow: hidden;
+        @include tablet {
+            margin-top: 40px;
+            height: 370px;
+        }
+        @include desktop-xl {
+            width: 90%;
+            height: 520px;
+            margin-top: 70px;
+            border-radius: vars.$radius-simple;
+        }
+    }
+    &__form {
+        position: relative;
+        z-index: 1;
+        .light-red-dots {
+            position: absolute;
+            bottom: 0;
+            right: 20px;
+            @include tablet {
+                right: -40px;
+            }
+            @include desktop-xl {
+                right: -40px;
+            }
+            @include desktop-xxl {
+                right: -140px;
+            }
+        }
+    }
+    
+}
+
+.contact-form {
+    &-box {
+        margin-top: 50px;
+        @include tablet {
+            margin-top: 0;
+        }
+    }
+    &-group {
+        width: 100%;
+        margin-bottom: 10px;
+        @include desktop-xl {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            color: vars.$secondary-color;
+            font-family: fonts.$Roboto-Medium;
+            font-size: 14px;
+            padding-bottom: 5px;
+            transition: 0.2s ease-in;
+            @include desktop-xl {
+                font-size: 16px;
+                padding-bottom: 8px;
+            }
+        }
+        &:focus-within label {
+            color: vars.$accent-color;
+        }
+        &__item {
+            font-family: fonts.$Roboto-Regular;
+            width: 100%;
+            height: 40px;
+            padding: 10px;
+            color: vars.$dark-color;
+            border-radius: vars.$radius-small;
+            font-size: vars.$text-size-mobile;
+            box-sizing: border-box;
+            border: 1px solid vars.$secondary-color;
+            transition: 0.2s ease-in;
+            @include desktop-xl {
+                height: 60px;
+                padding: 20px;
+                font-size: vars.$text-size;
+            }
+            &.textarea-item {
+                height: 150px;
+                @include desktop-xl {
+                    height: 200px;
+                }
+            }
+            &:focus {
+                outline: none;
+                border: 1px solid vars.$accent-color;
+                box-shadow: 0 0 0 5px rgb(190, 49, 49, 0.4);
+            }
+            
+        }
+        &__button {
+            margin-top: 20px;
+        }   
+    }
+    &-status {
+        opacity: 0;
+        display: inline-block;
+        width: 100%;
+        height: auto;
+        font-family: fonts.$Roboto-Medium;
+        font-size: 16px;
+        border-radius: vars.$radius-small;
+        border-top-right-radius: 0;
+        box-sizing: border-box;
+        padding: 15px;
+        margin-top: 20px;
+        background-color: #DAE6F3;
+        box-shadow: inset 1px 1px 25px 1px rgba(15, 110, 173, 0.2);
+        @include desktop-xl {
+            font-size: 20px;
+            min-height: 70px;
+            padding: 20px;
+            margin-top: 30px;
+        }
+        &.error {
+            color: vars.$accent-color-darker;
+        }
+        &.success {
+            color: vars.$second-accent-color-darker;
+        }
+    } 
+}
+
+.copyright {
+    width: 100%;
+    background-color: vars.$second-dark-color;
+    padding: 10px 0;
+    p {
+        font-family: fonts.$Roboto-Medium;
+        color: vars.$secondary-color;
+        font-size: 14px;
+        @include desktop-xl {
+            font-size: vars.$text-size;
+        }
+    }
+}

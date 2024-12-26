@@ -1,0 +1,231 @@
+@use "fonts";
+@use "vars";
+@use "mixin" as *;
+@use "media" as *;
+
+.welcome {
+    background-color: vars.$second-dark-color;
+    height: 95vh;
+    @include tablet {
+        height: 450px;
+    }
+    @include desktop-sm {
+        height: 600px;
+    }
+    @include desktop {
+        height: calc(100vh - 60px);
+    }
+    &-title {
+        position: relative;
+        h1 {
+            margin-left: 30px;
+            @include tablet {
+                white-space: nowrap;
+            }
+            @include desktop-xl {
+                margin-left: 65px;
+            }
+            span {
+                display: block;
+                padding-top: 20px;
+                @include tablet {
+                    padding-top: 30px;
+                }
+                @include desktop-xxl {
+                    padding-top: 50px; 
+                }
+            }
+        }
+        &__dots {
+            top: -100px;
+            right: -15px;
+            opacity: 0.7;
+            @include tablet {
+                right: auto;
+                left: 0;
+                top: -50px;
+            }
+            @include desktop-sm {
+                top: -70px;
+            }
+            @include desktop-xxl {
+                opacity: 1;
+            }
+        }
+
+    }
+    &-content {
+        margin-top: 50px; 
+        @include tablet {
+            margin-top: 0;
+        }
+        @include desktop-xl {
+            margin-top: 100px;
+        }
+        &__button {
+            display: none;
+            margin-left: 30px;
+            margin-top: 25px;
+            @include tablet {
+                display: block;
+                margin-top: 40px; 
+            }
+            @include desktop-xl {
+                margin-left: 65px;
+                margin-top: 50px;
+            }
+            @include desktop-xxl {
+                margin-top: 65px;
+            }
+        }
+        &-box {
+            height: 50%;
+            z-index: 1;
+            @include tablet {
+                height: 100%;
+            }
+        }
+    }
+    &-slider {
+        &-box {
+            height: 50%;
+            @include tablet {
+                height: 90%;
+                margin-top: 50px;
+            }
+            @include desktop-xl {
+                margin-top: 0;
+                height: 100%;
+            }
+        }
+    }
+
+    .splide-welcome {
+        height: 100%;
+        z-index: 0;
+        top: -20px;
+        @include desktop-xl {
+            height: calc(100% - 50px);
+            top: 0;
+        }
+        .splide__track {
+            height: 100%;
+            border-radius: 10%;
+            @include desktop-sm {
+                border-radius: 40%;
+            }
+            .splide__slide {
+                position: relative;
+                border-radius: 20%;
+                box-shadow: inset 5px 5px 40px 30px vars.$second-dark-color;
+                @include desktop-sm {
+                    border-radius: 40%;
+                    box-shadow: inset 10px 10px 60px 50px vars.$second-dark-color;
+                }
+                @include desktop-xl {
+                    box-shadow: inset 10px 10px 100px 120px vars.$second-dark-color;
+                }
+                &-bg {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    right: 0;
+                    bottom: 0;
+                    background-size: cover;
+                    background-position: center;
+                    z-index: -1; /* чтобы изображение фона было под текстом */
+                  }
+                &-capture {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: flex-end ;
+                    position: absolute;
+                    width: 100%;
+                    left: 0;
+                    bottom: 0;
+                    letter-spacing: 0.5px;
+                    box-sizing: border-box;
+                    text-align: right;
+                    padding: 15px;
+                    background-color: rgba(31, 48, 65, 0.4);
+                    @include desktop-sm {
+                        padding: 20px 20% 20px 0; 
+                        bottom: 10px;
+                    }
+                    @include desktop-xl {
+                        bottom: 40px;
+                    }
+                    h5 {
+                        color: vars.$base-color;
+                        padding-top: 10px;
+                        @include tablet {
+                           max-width: 90%; 
+                        }
+                        @include desktop-sm {
+                            max-width: 80%;
+                        }
+                        
+                    }
+                    p {
+                        display: inline-block;
+                        width: auto;
+                        background-color: vars.$base-color;
+                        border-radius: 5px;
+                        padding: 2px 10px;
+                        font-family: fonts.$Roboto-Bold;
+                        color: vars.$accent-color;
+                        letter-spacing: 1px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.main-container {
+    position: relative;
+    max-width: 100%;
+    box-sizing: border-box;
+    @include tablet {
+      padding: 0 20px;
+    }
+    @include desktop {
+      padding: 0 50px;
+    }
+    @include desktop-xxl {
+      padding: 0 100px;
+    }
+    .circle-button {
+      position: absolute;
+      width: 50px;
+      height: 50px;
+      left: 50%;
+      margin-left: -25px;
+      bottom: -25px;
+      @include desktop-sm {
+        width: 70px;
+        height: 70px;
+        margin-left: -35px;
+        bottom: -35px;
+      }
+      @include desktop-xxl {
+        width: 100px;
+        height: 100px;
+        margin-left: -50px;
+        bottom: -50px;
+      }
+      .icon {
+        width: 30px;
+        height: 30px;
+        transform: rotate(90deg);
+        @include desktop-sm {
+          width: 40px;
+          height: 40px;
+        }
+        @include desktop-xxl {
+          width: 60px;
+          height: 60px;
+        }
+      }
+    }
+  }

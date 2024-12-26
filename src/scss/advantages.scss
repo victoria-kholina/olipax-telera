@@ -1,0 +1,256 @@
+@use "fonts";
+@use "vars";
+@use "mixin" as *;
+@use "media" as *;
+
+.advantages {
+    .simple-section__title {
+        margin: 40px 0 30px;
+        @include tablet {
+            margin: 60px 0 40px;
+        }
+        @include desktop-xl {
+            margin: 80px 0 120px;
+        }
+    }
+    &-bottom-text {
+        margin-top: 60px;
+        text-align: center;
+        @include desktop-xl {
+            margin-top: 120px;
+        }
+        .simple-button {
+            margin: 20px 0 10px;
+            @include desktop-xl {
+                margin: 40px 0 20px;
+            }
+        }
+    }
+    &-content {
+        margin-top: 60px;
+        @include tablet {
+            margin-top: 0;
+        }
+        @include only-tablet {
+            order: 1;
+            margin-bottom: 60px;
+        }
+        @include desktop-xxl {
+            padding-right: 0!important;
+        }
+        h2 {
+            color: vars.$dark-color;
+            letter-spacing: 0.5px;
+        }
+        h2,h3 {
+            line-height: 1.3em;
+        }
+        .dots {
+            margin: 20px 0;
+            @include desktop-sm {
+                margin: 30px 0;
+            }
+            @include desktop-xl {
+                margin: 40px 0;
+            }
+        }
+        &-box {
+            margin-top: 20px;
+        }
+    }
+    &-item {
+        @include light-blue-bg;
+        position: relative;
+        width: 100%;
+        padding-top: 15px;
+        padding-bottom: 15px;
+        border-radius: vars.$radius-simple-mobile;
+        margin-top: 80px;
+        box-sizing: border-box;
+        @include tablet {
+            width: 80%;
+            padding-top: 20px;
+            padding-bottom: 20px;
+            margin-top: 60px;
+        }
+        @include desktop-sm {
+            border-radius: vars.$radius-simple;
+            width: 65%;
+            margin-top: 45px;
+        }
+        @include desktop-xl {
+            padding-top: 35px;
+            padding-bottom: 35px;
+        }
+        h3 {
+            padding: 15px 0 5px;
+            @include tablet {
+                padding: 20px 0 10px;
+            }
+        }
+        .icon {
+            top: -75px;
+            @include desktop-sm {
+                top: -100px;
+            }
+            @include desktop-xl {
+                top: -120px;
+            }
+        }
+        &.left {
+            text-align: left;
+            border-top-left-radius: 0;
+            padding-left: 30px;
+            padding-right: 15px;
+            @include tablet {
+                padding-right: 20px;
+            }
+            @include desktop-sm {
+                padding-left: 35px;
+                padding-right: 35px;
+            }
+            @include desktop-xl {
+                padding-left: 60px;
+            }
+        }
+        &.right {
+            text-align: right;
+            border-top-right-radius: 0;
+            padding-right: 30px; 
+            padding-left: 15px;
+            @include tablet {
+                padding-left: 20px;
+            }
+            @include desktop-sm {
+                padding-left: 35px;
+                padding-right: 35px;
+            }
+            @include desktop-xl {
+                padding-right: 60px; 
+            }
+        }
+        &:before {
+            position: absolute;
+            top: -50px;
+            background-color: vars.$accent-color;
+            color: transparent;
+            background-clip: text;
+            font-family: fonts.$RammettoOne-Regular;
+            font-size: 82px;
+            line-height: 1em;
+            text-shadow: 1px 1px 10px rgba(255, 255, 255, 0), 0 0 0 rgba(167, 7, 7, 0.7);
+            z-index: 2;
+            transition: 0.5s ease-in-out;
+            @include desktop-sm {
+                top: -60px;
+                font-size: 102px;
+            }
+            @include desktop-xl {
+                top: -70px;
+                font-size: 128px;
+            }
+        }
+        &:hover {
+            &:before {
+                transform: translateY(-10px);
+            }
+        }
+        &:nth-child(1) {
+            &:before {
+                content: "1";
+                left: 15px; 
+                @include desktop-xl {
+                    left: 40px;
+                }
+            }
+            .icon {
+                left: -10px;
+                @include tablet {
+                    left: -25px;
+                }
+                @include desktop-xl {
+                    left: -40px;
+                }
+                @include desktop-xxl {
+                    left: -140px;
+                }
+            }
+        }
+        &:nth-child(2) {
+            &:before {
+                content: "2";
+            }
+        }
+        &:nth-child(3) {
+            &:before {
+                content: "3";
+                left: 30px;
+                @include desktop-xl {
+                    left: 60px;
+                }
+            }
+        }
+        &:nth-child(4) {
+            &:before {
+                content: "4";
+            }
+            .icon {
+                right: -10px;
+                @include tablet {
+                    right: -25px;
+                }
+                @include desktop-xl {
+                    right: -40px;
+                }
+                @include desktop-xxl {
+                    right: -140px;
+                }
+            }
+        }
+        &:nth-child(2),
+        &:nth-child(4) {
+            &:before {
+                right: 30px; 
+                @include desktop-xl {
+                    right: 60px;
+                }     
+            }
+        }
+        
+    }
+    &-image {
+        position: relative;
+        @include only-tablet {
+            order: 2;
+        }
+        .rounded-img.left {
+            @include only-tablet {
+                border-top-right-radius: vars.$radius-large-mobile;
+                border-top-left-radius: 0;
+            }
+        }
+        .light-red-dots {
+            left: -15px;
+            top: -80px;
+            @include tablet {
+                left: auto;
+                right: 50%;
+                margin-right: -300px;
+            }
+            @include desktop-sm {
+                margin-right: 0;
+                right: auto;
+                top: -80px;
+                bottom: auto;
+                margin-left: -25px;
+            }
+            @include desktop-xl {
+                top: -100px;
+                margin-left: -40px;
+            }
+            @include desktop-xxl {
+                margin-left: -100px;
+            }
+        }
+    }
+}

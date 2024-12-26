@@ -1,0 +1,602 @@
+@use "reset";
+@use "fonts";
+@use "vars";
+@use "mixin" as *;
+@use "media" as *;
+@use "header";
+@use "welcome";
+@use "about-us";
+@use "services";
+@use "advantages";
+@use "our-projects";
+@use "contacts";
+@use "footer";
+@use "career";
+
+html {
+  scroll-behavior: smooth;
+}
+body {
+  font-family: fonts.$Roboto-Regular;
+  font-size: vars.$text-size-mobile;
+  letter-spacing: 0.3px;
+  color: vars.$dark-color;
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+  @include tablet {
+    font-size: vars.$text-size-tablet;
+  }
+  @include desktop-xl {
+    font-size: vars.$text-size;
+  }
+}
+*, ::after, ::before {
+  box-sizing: border-box;
+}
+a {
+  text-decoration: none;
+  font-family: fonts.$Roboto-Medium;
+  font-size: vars.$text-size-mobile;
+  letter-spacing: 0.5px;
+  &:hover,
+  &:focus,
+  &:active,
+  &:visited {
+    text-decoration: none;
+  }
+  @include tablet {
+    font-size: vars.$text-size-tablet;
+  }
+  @include desktop-xl {
+    font-size: vars.$text-size;
+  }
+}
+
+h1 {
+  font-size: vars.$h1-size-mobile;
+  color: vars.$base-color;
+  line-height: 1.2em;
+  @include tablet {
+    font-size: vars.$h1-size-tablet;
+  }
+  @include desktop-sm {
+    font-size: vars.$h1-size-desktop-sm;
+  }
+  @include desktop {
+    font-size: vars.$h1-size-desktop;
+  }
+  @include desktop-xxl {
+    font-size: vars.$h1-size;
+  }
+}
+
+h2 {
+  font-size: vars.$h2-size-mobile;
+  color: vars.$accent-color;
+  line-height: 1.3em;
+  @include tablet {
+    font-size: vars.$h2-size-tablet;
+  }
+  @include desktop-sm {
+    font-size: vars.$h2-size-desktop-sm;
+  }
+  @include desktop {
+    font-size: vars.$h2-size-desktop;
+  }
+  @include desktop-xxl {
+    font-size: vars.$h2-size;
+  }
+}
+h1, h2 {
+  letter-spacing: 1.5px;
+  font-family: fonts.$Nunito-Sans-Black;
+}
+h3 {
+  font-size: vars.$h3-size-mobile;
+  line-height: 1.3em;
+  @include tablet {
+    font-size: vars.$h3-size-tablet;
+  }
+  @include desktop-sm {
+    font-size: vars.$h3-size-desktop-sm;
+  }
+  @include desktop {
+    font-size: vars.$h3-size-desktop;
+  }
+  @include desktop-xxl {
+    font-size: vars.$h3-size;
+  }
+}
+
+h4 {
+  font-size: vars.$h4-size-mobile;
+  @include tablet {
+    font-size: vars.$h4-size-tablet;
+  }
+  @include desktop-xl{
+    font-size: vars.$h4-size-desktop;
+  }
+  @include desktop-xxl{
+    font-size: vars.$h4-size;
+  }
+}
+
+h3, h4, h5, h6 {
+  font-family: fonts.$Nunito-Sans-Extra-Bold;
+  letter-spacing: 0.2px;
+  color: vars.$dark-color;
+  @include desktop-xl {
+    letter-spacing: 0.4px;
+  }
+}
+
+h4, h5, h6 {
+  line-height: 1.3em;
+}
+h5 {
+  font-size: vars.$h5-size-mobile;
+  @include tablet {
+    font-size: vars.$h5-size-tablet;
+  }
+  @include desktop {
+    font-size: vars.$h5-size-desktop;
+  }
+  @include desktop-xl {
+    font-size: vars.$h5-size;
+  }
+}
+h6 {
+  font-size: vars.$h6-size-mobile;
+  @include tablet {
+    font-size: vars.$h6-size-tablet;
+  }
+  @include desktop-xl {
+    font-size: vars.$h6-size;
+  }
+}
+b {
+  font-family: fonts.$Roboto-Medium;
+}
+p,b {
+  line-height: 1.3em;
+  @include desktop-xl {
+    line-height: 1.5em;
+  }
+}
+.h-100 {
+  height: 100%;
+}
+.no-wrap {
+  white-space: nowrap;
+}
+.inner-page {
+  margin-top: 30px; 
+  @include desktop-xl {
+    margin-top: 80px;    
+  }
+  
+}
+button,
+input[type='submit'] {
+  font-family: fonts.$Roboto-Bold;
+  font-size: vars.$text-size-mobile;
+  user-select: none;
+  outline: 0;
+  letter-spacing: 1px;
+  color: vars.$base-color;
+  cursor: pointer;
+  text-transform: uppercase;
+  @include tablet {
+    font-size: vars.$h5-size-tablet;
+  }
+  @include desktop-xl {
+    font-size: vars.$h5-size;
+  }
+}
+.simple-button,
+.accent-button {
+  border-width: 0;
+  border-radius: 7px;
+  width: auto;
+  transition: 0.4s ease-in;
+  color: vars.$base-color;
+  padding: 10px 25px;
+  @include desktop {
+    padding: 15px 35px;
+  }
+  @include desktop-sm { 
+    border-radius: vars.$radius-small;
+  }
+  @include desktop-xxl {
+    padding: 20px 50px;
+  }
+}
+.simple-button {
+  @include blue-bg;
+  &:hover,
+  &:focus {
+    box-shadow: inset 1px 1px 30px 30px rgba(15,110,173,1), 0 0 0 5px rgba(15,110,173,0.4) ;
+    @include desktop {
+      box-shadow: inset 1px 1px 50px 50px rgba(15,110,173,1), 0 0 0 10px rgba(15,110,173,0.4) ;
+    }
+  }
+}
+.accent-button {
+  background-color: vars.$accent-color;
+  box-shadow: inset 1px 1px 20px 0 rgb(190, 49, 49);
+  &:hover,
+  &:focus {
+      box-shadow: inset 1px 1px 30px 30px rgb(190, 49, 49), 0 0 0 5px rgb(190, 49, 49, 0.4);
+      @include desktop {
+        box-shadow: inset 1px 1px 50px 50px rgb(190, 49, 49), 0 0 0 10px rgb(190, 49, 49, 0.4);
+      }
+  } 
+}
+.circle-button {
+  background-color: vars.$accent-color;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  transition: 0.4s ease-in;
+  box-shadow: inset 1px 1px 20px 0 vars.$accent-color-darker;
+  &:hover,
+  &:focus {
+    box-shadow: inset 1px 1px 25px 25px vars.$accent-color-darker, 0 0 0 5px rgba(190,49,49, 0.4);
+    @include desktop {
+      box-shadow: inset 1px 1px 50px 50px vars.$accent-color-darker, 0 0 0 10px rgba(190,49,49, 0.4);
+    }
+  }
+}
+
+.dots {
+  display: flex;
+}  
+.dot {
+  display: block;
+  width: 6px;
+  height: 6px;
+  background-color: vars.$accent-color;
+  border-radius: 50%;
+  margin-right: 10px;
+  @include desktop-sm {
+    width: 8px;
+    height: 8px;
+  }
+  @include desktop-xl {
+    width: 10px;
+    height: 10px;
+  }
+}
+.simple-section {
+  padding: 50px 0;
+  @include desktop-sm {
+    padding: 60px 0;
+  }
+  @include desktop-xl {
+    padding: 80px 0;
+  }
+  &__title {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    z-index: 5;
+    width: 100%;
+    height: auto;
+    h2 {
+      position: relative;
+      padding: 5px 15px;
+      display: inline-block;
+      width: auto;
+      background-color: vars.$base-color;
+      z-index: 2;
+      @include desktop-xl {
+        padding: 5px 30px;
+      }
+    }
+    &:before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 0;
+      z-index: -1;
+      width: 100%;
+      height: 3px;
+      background-color: vars.$accent-color;
+    }
+    &:after {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background-color: #fff;
+      z-index: 1;
+      transform: scale(1);
+      opacity: 1;
+      transition: opacity 1.5s, transform 1.5s;
+    }
+    &.animate.in-view::after {
+      transform: scale(0);
+    }
+    &.left {
+      &.animate.in-view::after {
+        transform-origin: center;
+        @include desktop-xl { 
+          transform-origin: 35%;
+        }
+      }
+      h2 {
+        @include desktop-xl {
+          margin-left: -500px;
+        } 
+      }
+    }
+    &.right {
+      &.animate.in-view::after {
+        transform-origin: center;
+        @include desktop-xl {
+          transform-origin: 65%;
+        }
+      }
+      h2 {
+        @include desktop-xl {
+          margin-right: -500px;
+        }
+      }
+    }
+  }
+}
+
+
+.accent-text {
+  color: vars.$accent-color;
+}
+
+.accent-title {
+  @include blue-bg;
+  display: inline;
+  color: vars.$base-color;
+  border-radius: vars.$radius-simple-mobile;
+  border-bottom-left-radius: 0;
+  padding: 10px 20px;
+  @include desktop-xxl {
+      border-radius: vars.$radius-simple;
+      border-bottom-left-radius: 0;
+  }
+}
+
+.accent-text-block {
+  @include light-blue-bg;
+  border-radius: vars.$radius-simple-mobile;
+  border-top-right-radius: 0;
+  padding: 15px;
+  @include tablet {
+      padding: 20px;
+  }
+  @include desktop-xl {
+      padding: 30px;
+      border-radius: vars.$radius-simple;
+      border-top-right-radius: 0;
+  }
+  &__dots {
+      margin: 15px 0;
+      @include tablet {
+          margin: 20px 0;
+      }
+  }
+}
+
+.accent-list {
+  li {
+    display: flex;
+    margin-top: 20px;
+    &:first-child {
+      margin-top: 0;
+    }
+    @include desktop-xl {
+        margin-top: 30px;
+    }
+    &:before {
+      content: '';
+      display: block;
+      position: relative;
+      top: 2px;
+      min-width: 20px;
+      width: 20px;
+      height: 20px;
+      margin-right: 15px;
+      background: url("../assets/img/sprite-bg-icons.svg#check-circle") no-repeat;
+      background-size: contain;
+      @include desktop-xl {
+        min-width: 30px;
+        width: 30px;
+        height: 30px;
+        margin-right: 20px;
+    }
+    }
+  }
+}
+
+.rounded-img {
+  position: relative;
+  overflow: hidden;
+  height: 300px;
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+  border-radius: vars.$radius-large-mobile;
+  @include desktop-sm {
+    border-radius: vars.$radius-large;
+    max-width: 100%;
+    height: 400px;
+  }
+  @include desktop-xl {
+    height: 500px;
+  }
+  &.right {
+    border-top-left-radius: 0;
+    @include desktop-sm {
+      border-bottom-left-radius: 0;
+    }
+  }
+  &.left {
+    border-top-right-radius: 0;
+    @include desktop-sm {
+      border-bottom-right-radius: 0;
+    }
+  }
+  img {
+    position: absolute;
+    width: auto;
+    height: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+.more-info-link {
+  display: inline-flex;
+  position: relative;
+  overflow: hidden;
+  text-decoration: none;
+  color: vars.$accent-color;
+  font-family: fonts.$Nunito-Sans-Bold;
+  font-size: vars.$text-size-mobile;
+  align-items: center;
+  @include tablet {
+    font-size: vars.$text-size-tablet;
+  }
+  @include desktop-xl {
+    font-size: vars.$text-size;
+  }
+  &:after {
+    content: '';
+    display: block;
+    position: relative;
+    width: 15px;
+    height: 15px;
+    margin-left: 5px;
+    background-image: url("../assets/img/sprite-bg-icons.svg#circle-right");
+    @include tablet {
+      width: 20px;
+      height: 20px;
+    }
+  }
+  &:before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: -85%;
+    width: 85%;
+    height: 2px;
+    background: vars.$accent-color;
+    transition: left .7s;
+  }
+  &:hover,
+  &:focus {
+    &:before {
+      left: 0;
+    }
+  }
+}
+
+// rewrited styles for Bootstrap
+.row>* {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.light-red-dots,
+.light-blue-dots {
+  width: 180px;
+  height: 260px;
+  position: absolute;
+  z-index: -1;
+  @include desktop-sm {
+    width: 220px;
+    height: 300px;
+  }
+  @include desktop-xl {
+    width: 300px;
+    height: 380px;
+  }
+}
+
+.technologies {
+  padding: 50px 0 30px;
+  @include desktop-sm {
+    padding: 60px 0;
+  }
+  @include desktop-xl {
+    padding: 100px 0 60px;
+  }
+  img {
+    display: block;
+    width: 100%;
+    margin-top: 50px;
+    @include only-tablet {
+      max-width: 80%;
+      margin: 50px auto 0;
+    }
+    @include desktop-sm {
+      margin-top: 0;
+    }
+  }
+}
+
+body::-webkit-scrollbar-button {
+  background-repeat: no-repeat;
+  width: 8px;
+  height: 0px
+}
+
+body::-webkit-scrollbar-track {
+  background-color: #fff;
+}
+
+body::-webkit-scrollbar-thumb {
+  -webkit-border-radius: 0px;
+  border-radius: 0px;
+  background-color: vars.$second-accent-color;
+}
+
+body::-webkit-scrollbar-thumb:hover {
+  background-color: vars.$second-accent-color;
+}
+
+body::-webkit-resizer {
+  background-repeat: no-repeat;
+  width: 8px;
+  height: 0px
+}
+
+body::-webkit-scrollbar {
+  width: 8px;
+}
+
+.accordion {
+  width: 100%;
+  margin: 20px 0;
+  &-item {
+    margin-bottom: 30px;
+    &__title {
+      @include light-blue-bg;
+      padding: 20px;
+      border-top-right-radius: vars.$radius-simple-mobile;
+      border-bottom-left-radius: vars.$radius-simple-mobile;
+      cursor: pointer;
+      @include desktop-xl {
+        border-top-right-radius: vars.$radius-simple;
+        border-bottom-left-radius: vars.$radius-simple;
+        padding: 30px;
+      }
+    }
+    &__content {
+      display: none;
+      padding: 30px 30px 0;
+      &.active {
+        display: block;
+      }
+    }
+  }
+}

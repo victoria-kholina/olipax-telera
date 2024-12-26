@@ -1,0 +1,224 @@
+@use "fonts";
+@use "vars";
+@use "mixin" as *;
+@use "media" as *;
+
+.our-projects {
+    background-color: vars.$dark-color;
+    h4 {
+        margin-top: 30px;
+        color: vars.$secondary-color;
+        width: 100%;
+        @include tablet {
+            width: 80%;
+            margin: 30px auto 0 ;
+            padding: 0 10px;
+        }
+        @include desktop-sm {
+            width: 95%;
+        }
+        @include desktop-xl {
+            margin-top: 60px;
+        }
+        @include desktop-xxl {
+            width: 100%;
+        }
+        
+    }
+    .simple-section__title {
+        h2,
+        &:after {
+            background-color: vars.$dark-color;
+        }
+    }
+    &-slider-wrap {
+        position: relative;
+        z-index: 1;
+        .light-blue-dots {
+            display: block;
+            top: -130px;
+            right: 0;
+            z-index: -1;
+            @include desktop-xl {
+                right: -40px;
+            }
+            @include desktop-xxl {
+                right: -150px;
+            }
+        }
+    }
+    .splide {
+        margin-top: 50px;
+        @include tablet {
+            width: 80%;
+            margin: 50px auto 0 ;
+        }
+        @include desktop-sm {
+            width: 95%;
+        }
+        @include desktop-xxl {
+            width: 100%;
+            margin: 80px 0 20px;
+        }
+        &__slide {
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: column;
+            @include light-blue-bg;
+            border-radius: vars.$radius-large-mobile;
+            border-top-right-radius: 0;
+            padding: 15px;
+            margin: 0 15px;
+            box-sizing: border-box;
+            width: calc(100% - 30px)!important;
+            @include tablet {
+                padding: 20px;
+            }
+            @include desktop-sm {
+                flex-wrap: nowrap;
+                flex-direction: row;
+            }
+            @include desktop-xl {
+                padding: 30px;
+                border-radius: vars.$radius-large;
+                border-top-right-radius: 0;
+            }
+            &__container {
+                width: 100%;
+                height: 300px;
+                border-radius: vars.$radius-large-mobile;
+                border-top-right-radius: 0;
+                @include desktop-sm {
+                    min-width: 400px;
+                    width: 400px;
+                    height: 100%;
+                    border-bottom-right-radius: 0;
+                }
+                @include desktop-xl {
+                    border-bottom-left-radius: vars.$radius-large;
+                    border-top-left-radius: vars.$radius-large;
+                }
+            }
+            &__content {
+                margin-top: 30px;
+                @include desktop-sm {
+                    margin-top: 0;
+                    padding-left: 20px;
+                }
+                h3 {
+                    margin-bottom: 20px;
+                }
+            }
+            
+            
+        }
+        &__arrows {
+            display: flex;
+            justify-content: space-between;
+            position: absolute;
+            z-index: 1;
+            width: 100%;
+            top: 180px;
+            margin-top: -30px; 
+            @include tablet {
+              top: 50%;  
+              margin-top: -40px;
+            }
+            @include desktop {               
+                margin-top: -60px; 
+            }
+        }
+        &__arrow {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 30px;
+            height: 30px;
+            @include tablet {
+                width: 40px;
+                height: 40px;
+            }
+            @include desktop {
+                width: 60px;
+                height: 60px;
+            }
+            &:hover,
+            &:focus {
+                box-shadow: inset 1px 1px 25px 25px vars.$accent-color-darker, 0 0 0 5px rgba(190,49,49, 0.4);
+                @include desktop {
+                    box-shadow: inset 1px 1px 50px 50px vars.$accent-color-darker, 0 0 0 10px rgba(190,49,49, 0.4);
+                }
+            }
+            svg {
+                fill: vars.$secondary-color;
+                width: 20px;
+                height: 20px;
+                @include desktop {
+                    width: 40px;
+                    height: 40px;
+                }
+            }
+            &--next {
+                right: -5px;
+                @include tablet{
+                    right: -60px;
+                }
+                @include desktop-xl {
+                    right: -80px;
+                }
+            }
+            &--prev {
+                left: -5px;
+                @include tablet {
+                    left: -60px;
+                }
+                @include desktop-xl {
+                    left: -80px;
+                }
+                svg {
+                    transform: rotate(180deg);
+                }
+            }
+        }
+        &__pagination button,
+        &__arrow { 
+            border-radius: 50%;
+            border-width: 0;
+            outline: none;
+            background-color: vars.$accent-color;
+            box-shadow: inset 1px 1px 20px 0 vars.$accent-color-darker;
+            transition: 0.4s ease-in;
+            padding: 0;
+            &:hover,
+            &:focus {
+                box-shadow: inset 1px 1px 30px 30px vars.$accent-color-darker, 0 0 0 5px rgba(190,49,49, 0.4);
+                @include desktop {
+                    box-shadow: inset 1px 1px 50px 50px vars.$accent-color-darker, 0 0 0 10px rgba(190,49,49, 0.4);
+                }
+            }
+        }
+        &__pagination {
+            margin-top: 20px;
+            @include desktop {
+                margin-top: 40px;
+            }
+            button {
+                width: 10px;
+                height: 10px;
+                margin: 0 8px;
+                @include desktop {
+                    width: 15px;
+                    height: 15px;
+                    margin: 0 10px;
+                }
+                &.is-active {
+                    box-shadow: inset 1px 1px 30px 30px vars.$accent-color-darker, 0 0 0 5px rgba(190,49,49, 0.4);
+                    @include desktop {
+                        box-shadow: inset 1px 1px 50px 50px vars.$accent-color-darker, 0 0 0 10px rgba(190,49,49, 0.4);
+                    }
+                }
+            }
+        }
+    }
+}
