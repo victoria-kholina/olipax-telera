@@ -388,6 +388,22 @@ input[type='submit'] {
 
 .accent-list {
   li {
+    &:before {
+      min-width: 20px;
+      width: 20px;
+      height: 20px;
+      background: url("../assets/img/sprite-bg-icons.svg#check-circle") no-repeat;
+      @include desktop-xl {
+        min-width: 30px;
+        width: 30px;
+        height: 30px;
+      }
+    }
+  }
+}
+.accent-list,
+.simple-list {
+  li {
     display: flex;
     margin-top: 20px;
     &:first-child {
@@ -401,18 +417,27 @@ input[type='submit'] {
       display: block;
       position: relative;
       top: 2px;
-      min-width: 20px;
-      width: 20px;
-      height: 20px;
       margin-right: 15px;
-      background: url("../assets/img/sprite-bg-icons.svg#check-circle") no-repeat;
       background-size: contain;
       @include desktop-xl {
-        min-width: 30px;
-        width: 30px;
-        height: 30px;
         margin-right: 20px;
     }
+    }
+  }
+}
+
+.simple-list {
+  li {
+    &:before {
+      min-width: 15px;
+      width: 15px;
+      height: 15px;
+      background: url("../assets/img/sprite-bg-icons.svg#check") no-repeat;
+      @include desktop-xl {
+        min-width: 25px;
+        width: 25px;
+        height: 25px;
+      }
     }
   }
 }
@@ -580,6 +605,7 @@ body::-webkit-scrollbar {
   &-item {
     margin-bottom: 30px;
     &__title {
+      transition: 0.5s ease-in-out;
       @include light-blue-bg;
       padding: 20px;
       border-top-right-radius: vars.$radius-simple-mobile;
@@ -590,13 +616,31 @@ body::-webkit-scrollbar {
         border-bottom-left-radius: vars.$radius-simple;
         padding: 30px;
       }
+      &.active + .accordion-item__content {
+        display: block;
+      }
+      &:hover {
+        transform: translateY(-5px);
+      }
     }
     &__content {
       display: none;
       padding: 30px 30px 0;
-      &.active {
-        display: block;
-      }
+    }
+  }
+}
+
+.faq {
+  &-text-top {
+    margin: 30px 0 60px;
+    @include desktop-xl {
+      margin: 50px 0 80px;
+    }
+  }
+  &-text-bottom {
+    margin-top: 50px;
+    @include desktop-xl {
+      margin-top: 80px;
     }
   }
 }
