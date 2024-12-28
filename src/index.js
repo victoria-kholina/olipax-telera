@@ -5,6 +5,7 @@ import './scss/main.scss'
 import $ from 'jquery';
 import Splide from '@splidejs/splide';
 
+
  $(function() {
 
     // Инициализация слайдеров SPLIDE
@@ -76,7 +77,7 @@ import Splide from '@splidejs/splide';
                   .removeClass('error')
                   .addClass('success')
                   .text('Сообщение успешно отправлено!')
-                  .css("opacity", "1");
+                  .css("display", "inline-block");
               $('#contact-form')[0].reset(); 
           },
           error: function () {
@@ -84,7 +85,7 @@ import Splide from '@splidejs/splide';
                   .removeClass('success')
                   .addClass('error')
                   .text('Произошла ошибка при отправке сообщения.')
-                  .css("opacity", "1");
+                  .css("display", "inline-block");
           }
       });
     });
@@ -159,7 +160,21 @@ import Splide from '@splidejs/splide';
 
       content.slideToggle().toggleClass('active');
     });
-    
+
+    // Cookies
+
+    const notification = $('#cookie-notification');
+    const cookiesAccepted = localStorage.getItem('cookiesAccepted');
+
+    if (!cookiesAccepted) {
+      notification.css("display","flex");
+    }
+
+    $('#accept-cookies').on('click', function () {
+      localStorage.setItem('cookiesAccepted', 'true'); 
+      notification.css("display","none"); 
+    });
+      
 
     //     // Функция для проверки поддержки WebP
 //     function supportsWebP(callback) {

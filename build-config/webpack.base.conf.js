@@ -21,6 +21,7 @@ const htmlPlugins = ejsFiles.map(file => {
     return new HtmlWebpackPlugin({
         template: path.join(PATHS.src, file),
         filename: file.replace('.ejs', '.html'),
+        favicon: `${PATHS.dist}/favicon.ico`
     });
 });
 
@@ -30,6 +31,7 @@ const htmlPluginsServices = ejsFilesServices.map(file => {
     return new HtmlWebpackPlugin({
         template: path.join(PATHS.src, PATHS.services, file),
         filename: `${PATHS.services}/${file.replace('.ejs', '.html')}`,
+        favicon: `${PATHS.dist}/favicon.ico`
     });
 });
 
@@ -61,6 +63,10 @@ module.exports = {
                     {
                         loader: 'postcss-loader',
                         options: { sourceMap: true }
+                    },
+                    {
+                        loader: 'sass-loader',
+                        options: { sourceMap: true }
                     }
                 ]
             },
@@ -78,7 +84,16 @@ module.exports = {
                     },
                     {
                         loader: 'postcss-loader',
-                        options: { sourceMap: true }
+                        options: { 
+                            sourceMap: true,
+                            postcssOptions: {
+                                plugins: [
+                                    require('autoprefixer')({
+                                        grid: 'autoplace'
+                                    })
+                                ]
+                            }
+                         }
                     }
                 ]
             },
@@ -106,6 +121,7 @@ module.exports = {
         ...htmlPluginsServices,
         new CopyWebpackPlugin({
             patterns: [
+                { from: `${PATHS.src}/favicon.ico`, to: `${PATHS.dist}/favicon.ico` },
                 { from: `${PATHS.src}/${PATHS.assets}css`, to: `${PATHS.dist}/${PATHS.assets}css` },
                 { from: `${PATHS.src}/${PATHS.assets}img`, to: `${PATHS.dist}/${PATHS.assets}img` },
                 { from: `${PATHS.src}/${PATHS.assets}fonts`, to: `${PATHS.dist}/${PATHS.assets}fonts` },

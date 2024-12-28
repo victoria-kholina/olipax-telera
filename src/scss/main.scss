@@ -157,7 +157,7 @@ h6 {
 b {
   font-family: fonts.$Roboto-Medium;
 }
-p,b {
+a,p,b {
   line-height: 1.3em;
   @include desktop-xl {
     line-height: 1.5em;
@@ -186,8 +186,11 @@ p,b {
     }
   }
 }
+a.simple-button,
+a.accent-button,
 button,
 input[type='submit'] {
+  display: inline-block;
   font-family: fonts.$Roboto-Bold;
   font-size: vars.$text-size-mobile;
   user-select: none;

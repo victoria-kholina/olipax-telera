@@ -30,6 +30,7 @@
     }
 }
 .logo {
+    display: block;
     @include red-bg;
     height: 45px;
     width: 180px;
@@ -39,6 +40,7 @@
     border-bottom-right-radius: vars.$radius-simple-mobile;
     text-align: center;
     white-space: nowrap;
+
     @include tablet {
         width: 220px;
     }
@@ -267,8 +269,9 @@
         right: 0;
         display: flex;
         flex-direction: column;
-        width: 25px;
-        height: 25px;
+        gap: 5px;
+        width: 26px;
+        height: 21px;
         background: none;
         border: none;
         padding: 0;
@@ -279,7 +282,6 @@
             height: 2px;
             background-color: vars.$secondary-color;
             transition: transform 0.3s ease;
-            margin-bottom: 5px;
         }
         &.open {
             .line:nth-child(1) {
