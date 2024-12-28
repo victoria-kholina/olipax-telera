@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <title></title>
+    <%- include('../templates/meta.ejs') %>
+</head>
+<body class="inner-page">
+<%- include('../templates/header.ejs') %>
+
+<section class="simple-section">
+    <div class="simple-section__title left animate">
+        <h2>Микроэлектроника</h2>
+    </div>
+    <div class="container-md container-xxl">
+
+        <div class="service">
+            <div class="row service-content">
+                <div class="col-lg-6">
+                    <p>
+                        Наша компания специализируется на разработке и проектировании микроэлектронных устройств, включая процессоры, микроконтроллеры, FPGA и ASIC. 
+                        Мы предлагаем комплексные услуги от концепции до производства прототипов.</p>
+                        <div class="dots">
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                        </div>
+                        <p>Мы используем передовые инструменты автоматизированного проектирования (EDA) и сотрудничаем с ведущими производственными фабриками для обеспечения высокого качества и надежности наших устройств.</p>
+                        
+                </div>
+                <div class="col-lg-6">
+                    <div class="service-content-image">
+                        <div class="rounded-img right">
+                          <img src="../assets/img/microelectronics.webp"  alt="Микроэлектроника">
+                        </div>
+                        <svg class="icon light-red-dots">
+                          <use xlink:href="#light-red-dots"></use>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+            <div class="service-features">
+                <div class="service-content__title"><h3 class="accent-title">Что мы предлагаем?</h3></div>
+                    <ul class="accent-list">
+                        <li>
+                            <div class="accent-list__content">
+                                <h5>Проектирование интегральных схем (IC Design)</h5>
+                                <p>Разработка цифровых и аналоговых микросхем по индивидуальным требованиям.
+                                </p>
+                            </div>  
+                        </li>
+                        <li>
+                            <div class="accent-list__content">
+                                <h5>Разработка FPGA-решений</h5>
+                                <p>Создание и настройка проектов на FPGA от Altera (Intel FPGA), Xilinx и других производителей.</p> 
+                            </div>
+                        </li>
+                        <li>
+                            <div class="accent-list__content">
+                                <h5>Разработка ASIC</h5>
+                                <p>Полный цикл разработки Application-Specific Integrated Circuit для специализированных приложений.</p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="accent-list__content">
+                                <h5>Сопроцессоры и специализированные вычислительные блоки</h5>
+                                <p>Проектирование процессорных модулей для высокопроизводительных вычислений.</p>
+                            </div>
+                        </li>
+                    </ul>
+            </div>      
+            <div class="service-features__technologies">
+                <h5 class="accent-text">Технологии, которые мы используем:</h5>
+                <ul class="simple-list">
+                    <li>
+                        <p><b>EDA инструменты: </b>Cadence, Synopsys, Mentor Graphics. 
+                        </p>
+                    </li>
+                    <li>
+                        <p><b>Языки описания аппаратуры: </b>VHDL, Verilog, SystemVerilog.</p>
+                    </li>
+                </ul>
+            </div>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+
+<%- include('../templates/footer.ejs') %>
+</body>
+</html>

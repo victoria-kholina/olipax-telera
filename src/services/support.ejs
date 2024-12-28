@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <title></title>
+    <%- include('../templates/meta.ejs') %>
+</head>
+<body class="inner-page">
+<%- include('../templates/header.ejs') %>
+
+<section class="simple-section">
+    <div class="simple-section__title left animate">
+        <h2>Поддержка 24/7</h2>
+    </div>
+    <div class="container-md container-xxl">
+
+        <div class="service">
+            <div class="row service-content">
+                <div class="col-lg-6">
+                    <p>
+                        Наша команда технической поддержки доступна круглосуточно, обеспечивая оперативное решение любых проблем и минимизируя время простоя систем. 
+                        Мы используем современные инструменты мониторинга и управления, что позволяет предвидеть и предотвращать возможные сбои.</p>
+                        <div class="dots">
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                        </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="service-content-image">
+                        <div class="rounded-img right">
+                          <img src="../assets/img/support.webp"  alt="Техническая поддержка">
+                        </div>
+                        <svg class="icon light-red-dots">
+                          <use xlink:href="#light-red-dots"></use>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+            <div class="service-features">
+                <div class="service-content__title"><h3 class="accent-title">Что мы предлагаем?</h3></div>
+                    <ul class="accent-list">
+                        <li>
+                            <div class="accent-list__content">
+                                <h5>Системы резервного копирования и восстановлени</h5>
+                                <p>Разработка и внедрение надежных стратегий резервного копирования данных с возможностью быстрого восстановления.
+                                </p>
+                            </div>  
+                        </li>
+                        <li>
+                            <div class="accent-list__content">
+                                <h5>Управление идентификацией и доступом</h5>
+                                <p>Внедрение систем контроля доступа для защиты конфиденциальной информации.</p> 
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+
+<%- include('../templates/footer.ejs') %>
+</body>
+</html>

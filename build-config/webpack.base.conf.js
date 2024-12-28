@@ -8,15 +8,28 @@ const PATHS = {
     src: path.join(__dirname, '../src'),
     dist: path.join(__dirname, '../dist'),
     styles: 'css/',
-    assets: 'assets/'
+    assets: 'assets/',
+    services: 'services'
 };
 
-// Автоматическое добавление всех HTML файлов
-const htmlFiles = fs.readdirSync(`${PATHS.src}`).filter(file => file.endsWith('.html'));
-const htmlPlugins = htmlFiles.map(file => {
+
+// Автоматическое добавление EJS файлов. И преобразование их в html
+
+const ejsFiles = fs.readdirSync(`${PATHS.src}`).filter(file => file.endsWith('.ejs'));
+
+const htmlPlugins = ejsFiles.map(file => {
     return new HtmlWebpackPlugin({
-        template: `${PATHS.src}/${file}`,
-        filename: file
+        template: path.join(PATHS.src, file),
+        filename: file.replace('.ejs', '.html'),
+    });
+});
+
+const ejsFilesServices = fs.readdirSync(`${PATHS.src}/${PATHS.services}`).filter(file => file.endsWith('.ejs'));
+
+const htmlPluginsServices = ejsFilesServices.map(file => {
+    return new HtmlWebpackPlugin({
+        template: path.join(PATHS.src, PATHS.services, file),
+        filename: `${PATHS.services}/${file.replace('.ejs', '.html')}`,
     });
 });
 
@@ -33,6 +46,10 @@ module.exports = {
     devtool: 'source-map',
     module: {
         rules: [
+            {
+                test: /\.ejs$/i,
+                use: ['html-loader', 'template-ejs-loader'],
+            },
             {
                 test: /\.css$/,
                 use: [
@@ -66,7 +83,7 @@ module.exports = {
                 ]
             },
             {
-                test: /\.(png|jpg|gif|svg)$/i,
+                test: /\.(png|jpg|gif|svg|webp)$/i,
                 type: 'asset/resource',
                 generator: {
                     filename: `${PATHS.assets}img/[name][ext]`
@@ -86,6 +103,7 @@ module.exports = {
             filename: `${PATHS.styles}[name].css`
         }),
         ...htmlPlugins, // Автоматически подключаем все HTML-файлы
+        ...htmlPluginsServices,
         new CopyWebpackPlugin({
             patterns: [
                 { from: `${PATHS.src}/${PATHS.assets}css`, to: `${PATHS.dist}/${PATHS.assets}css` },

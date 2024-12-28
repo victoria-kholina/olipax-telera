@@ -11,6 +11,10 @@ const devWebpackConfig = merge(baseWebpackConfig, {
             directory: baseWebpackConfig.externals.paths.dist
         },
         watchFiles: {
+            paths: [
+                'src/**/*.ejs',  
+                'src/**/*'      
+            ],
             options: {
                 ignored: /node_modules/
             }

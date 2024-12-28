@@ -2,25 +2,42 @@
 @use "vars";
 @use "media"as *;
 
-@mixin light-red-dots-bottom-right {
-    right: -15px;
-    top: -80px;
-    @include tablet {
-        right: 50%;
-        margin-right: -300px;
-    }
-    @include desktop-sm {
-        right: -40px;
-        margin-right: 0;
-    }
+
+
+@mixin dots-simple-text {
+    margin: 20px 0;
     @include desktop-xl {
-        margin-right: 0;
-        top: auto;
-        bottom: -100px;
+        margin: 25px 0;
     }
-    @include desktop-xxl {
-        right: -100px;
+}
+
+@mixin image-light-dots-bottom-right {
+    margin-bottom: 20px;
+    position: relative;
+    @include desktop-xl {
+        margin-bottom: 0;
     }
+    .icon {
+        right: -15px;
+        top: -80px;
+        @include tablet {
+            right: 50%;
+            margin-right: -300px;
+        }
+        @include desktop-sm {
+            right: -40px;
+            margin-right: 0;
+        }
+        @include desktop-xl {
+            margin-right: 0;
+            top: auto;
+            bottom: -100px;
+        }
+        @include desktop-xxl {
+            right: -100px;
+        }
+    }
+    
 }
 
 @mixin light-blue-bg {

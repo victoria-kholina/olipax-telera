@@ -27,7 +27,7 @@
             margin-bottom: 20px;
         }
         .dots {
-            margin: 20px 0;
+            @include dots-simple-text;
         }
     }
     &__data {
