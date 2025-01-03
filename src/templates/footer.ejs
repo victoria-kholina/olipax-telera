@@ -73,7 +73,7 @@
         <div class="col-md-6 col-xxl-5 contact-form-box">
           <h3>Форма обратной связи</h3>
           <div class="footer-main__form">
-            <form id="footer-form" class="contact-form">
+            <form id="footer-form" class="contact-form" method="POST">
               <div class="contact-form-group">
                 <label for="user-name">Ваше имя <span class="accent-text">*</span></label>
                 <input type="text" id="user-email" name="user-name" class="contact-form-group__item" required>
@@ -87,9 +87,7 @@
               <div class="contact-form-group">
                 <label for="user-phone">Ваш номер телефона <span class="accent-text">*</span></label>
 
-                <input type="tel" id="user-phone" name="user-phone" class="contact-form-group__item" required
-                      pattern="^\+?[0-9]{1,4}?[\s\-()]*[0-9]{7,20}$"
-                      title="Введите корректный номер телефона (например, +1234567890 или (123) 456-7890)">
+                <input type="tel" id="user-phone" name="user-phone" class="contact-form-group__item" required>
               </div>
               <div class="contact-form-group">
                 <label for="user-message">Ваше сообщение</label>

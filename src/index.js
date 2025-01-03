@@ -70,7 +70,7 @@ import Splide from '@splidejs/splide';
 
       $.ajax({
           type: 'POST',
-          url: 'php/send_email.php', // Путь к серверному обработчику
+          url: './php/send_email.php', // Путь к серверному обработчику
           data: formData,
           success: function (response) {
               $('#form-status')
