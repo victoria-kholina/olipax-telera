@@ -2,6 +2,7 @@ const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ImageMinimizerPlugin = require('image-minimizer-webpack-plugin');
 const fs = require('fs');
 
 const PATHS = {
@@ -12,9 +13,7 @@ const PATHS = {
     services: 'services'
 };
 
-
 // Автоматическое добавление EJS файлов. И преобразование их в html
-
 const ejsFiles = fs.readdirSync(`${PATHS.src}`).filter(file => file.endsWith('.ejs'));
 
 const htmlPlugins = ejsFiles.map(file => {
@@ -98,14 +97,14 @@ module.exports = {
                 ]
             },
             {
-                test: /\.(png|jpg|gif|svg|webp)$/i,
-                type: 'asset/resource',
+                test: /\.(png|jpe?g|gif|webp)$/i,
+                type: 'asset',
                 generator: {
                     filename: `${PATHS.assets}img/[name][ext]`
                 }
             },
             {
-                test: /\.(woff(2)?|ttf|eot)$/,
+                test: /\.(woff(2)?|ttf|eot)$/i,
                 type: 'asset/resource',
                 generator: {
                     filename: `${PATHS.assets}fonts/[name][ext]`
@@ -113,11 +112,37 @@ module.exports = {
             }
         ]
     },
+    optimization: {
+        minimizer: [
+            new ImageMinimizerPlugin({
+                minimizer: {
+                    implementation: ImageMinimizerPlugin.imageminMinify,
+                    options: {
+                        plugins: [
+                            ['imagemin-gifsicle', { interlaced: true }],
+                            ['imagemin-mozjpeg', { quality: 60 }], // Оптимизация JPEG
+                            ['imagemin-optipng', { optimizationLevel: 5 }]
+                        ],
+                    },
+                }, 
+            }),
+            new ImageMinimizerPlugin({
+                minimizer: {
+                    implementation: ImageMinimizerPlugin.imageminGenerate,
+                    options: {
+                        plugins: [
+                            ['imagemin-webp', { quality: 60 }],
+                        ],
+                    },
+                },
+            }),
+        ],
+    },
     plugins: [
         new MiniCssExtractPlugin({
             filename: `${PATHS.styles}[name].css`
         }),
-        ...htmlPlugins, // Автоматически подключаем все HTML-файлы
+        ...htmlPlugins,
         ...htmlPluginsServices,
         new CopyWebpackPlugin({
             patterns: [
@@ -127,6 +152,7 @@ module.exports = {
                 { from: `${PATHS.src}/${PATHS.assets}fonts`, to: `${PATHS.dist}/${PATHS.assets}fonts` },
                 { from: `${PATHS.src}/php`, to: `${PATHS.dist}/php` }
             ]
-        })
-    ]
-}
+        }),
+        
+    ],
+};
