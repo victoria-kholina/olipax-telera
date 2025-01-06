@@ -2,7 +2,7 @@
 
 This is the official website project for Olipax Telera Ltd, built using Node.js with Webpack 5 as the core build tool. 
 
-##Features
+## Features
 
 - **Modern and Responsive Design:** Built with SCSS and JavaScript to ensure a smooth user experience across all devices.
 
