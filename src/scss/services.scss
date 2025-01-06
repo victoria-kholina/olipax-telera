@@ -138,15 +138,11 @@
         @include desktop-xl {
             margin: 80px 0;
         }
-        .dots {
-            @include dots-simple-text
-        }
         &-image {
             margin-top: 60px;
             @include desktop-sm {
                 margin-top: 0;
             }
-            @include image-light-dots-bottom-right;
         }
     }
     &-features {

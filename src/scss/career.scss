@@ -7,7 +7,7 @@
     &-subtitle {
         margin-bottom: 60px; 
         @include desktop-xl {
-            margin-bottom: 90px;
+            margin-bottom: 80px;
             max-width: vars.$max-width-block;
         }
     }
@@ -21,16 +21,13 @@
             color: vars.$accent-color;
         }
     }
-    .dots {
-        @include dots-simple-text;
-    }
-    &-image {
-        @include image-light-dots-bottom-right;
-    }
     &-advantages {
-        
+        padding-top: 40px;
         @include desktop-sm {
-            padding-top: 30px;
+            padding-top: 50px;
+        }
+        @include desktop-xl {
+            padding-top: 80px;
         }
         &__text {
             @include desktop-sm {

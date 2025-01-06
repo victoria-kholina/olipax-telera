@@ -264,6 +264,10 @@ input[type='submit'] {
 
 .dots {
   display: flex;
+  margin: 15px 0;
+    @include desktop-xl {
+        margin: 25px 0;
+    }
 }  
 .dot {
   display: block;
@@ -396,12 +400,6 @@ input[type='submit'] {
       padding: 30px;
       border-radius: vars.$radius-simple;
       border-top-right-radius: 0;
-  }
-  &__dots {
-      margin: 15px 0;
-      @include tablet {
-          margin: 20px 0;
-      }
   }
 }
 
@@ -545,7 +543,9 @@ input[type='submit'] {
   }
 }
 
-// rewrited styles for Bootstrap
+
+/* rewrited styles for Bootstrap */ 
+
 .row>* {
   padding-left: 15px;
   padding-right: 15px;
@@ -564,6 +564,34 @@ input[type='submit'] {
   @include desktop-xl {
     width: 300px;
     height: 380px;
+  }
+}
+
+.light-dots-bottom-right {
+  margin-bottom: 20px;
+  position: relative;
+  @include desktop-xl {
+      margin-bottom: 0;
+  }
+  .icon {
+      right: -15px;
+      top: -70px;
+      @include tablet {
+          right: 50%;
+          margin-right: -300px;
+      }
+      @include desktop-sm {
+          right: -40px;
+          margin-right: 0;
+      }
+      @include desktop-xl {
+          margin-right: 0;
+          top: auto;
+          bottom: -100px;
+      }
+      @include desktop-xxl {
+          right: -100px;
+      }
   }
 }
 

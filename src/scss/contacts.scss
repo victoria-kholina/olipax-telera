@@ -26,9 +26,6 @@
         @include desktop-xl {
             margin-bottom: 20px;
         }
-        .dots {
-            @include dots-simple-text;
-        }
     }
     &__data {
         padding: 15px 30px;

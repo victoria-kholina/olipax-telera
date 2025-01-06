@@ -3,6 +3,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ImageMinimizerPlugin = require('image-minimizer-webpack-plugin');
+
 const fs = require('fs');
 
 const PATHS = {
@@ -78,10 +79,6 @@ module.exports = {
                         options: { sourceMap: true }
                     },
                     {
-                        loader: 'sass-loader',
-                        options: { sourceMap: true }
-                    },
-                    {
                         loader: 'postcss-loader',
                         options: { 
                             sourceMap: true,
@@ -89,11 +86,28 @@ module.exports = {
                                 plugins: [
                                     require('autoprefixer')({
                                         grid: 'autoplace'
-                                    })
+                                    }),
+                                    require('postcss-sort-media-queries')({
+                                        sort: 'mobile-first', // Сортировка в порядке mobile-first
+                                    }),
+                                    require('cssnano')({
+                                        preset: [
+                                            'default',
+                                            {
+                                                discardComments: {
+                                                    removeAll: true
+                                                }
+                                            }
+                                        ]
+                                    }),
                                 ]
                             }
                          }
-                    }
+                    },
+                    {
+                        loader: 'sass-loader',
+                        options: { sourceMap: true }
+                    },
                 ]
             },
             {
@@ -131,7 +145,7 @@ module.exports = {
                     implementation: ImageMinimizerPlugin.imageminGenerate,
                     options: {
                         plugins: [
-                            ['imagemin-webp', { quality: 60 }],
+                            ['imagemin-webp', { quality: 75 }],// Оптимизация WebP
                         ],
                     },
                 },

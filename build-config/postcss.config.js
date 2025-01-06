@@ -6,9 +6,9 @@ module.exports = {
             overrideBrowserslist: ['>1%', 'last 3 versions'],
             grid: 'autoplace'
         }),
-
-
-
+        require('postcss-sort-media-queries')({
+            sort: 'mobile-first', // Сортировка в порядке mobile-first
+        }),
         require('cssnano')({
             preset: [
                 'default',

@@ -22,9 +22,6 @@
             }
             
         }
-        .dots {
-            @include dots-simple-text;
-        }
         .more-info-link {
             margin-top: 15px;
             @include tablet {
@@ -34,8 +31,5 @@
                 margin-top: 30px;
             }
         }
-    }
-    &-image {
-        @include image-light-dots-bottom-right;
     }
 }
