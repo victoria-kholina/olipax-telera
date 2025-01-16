@@ -7,7 +7,7 @@ module.exports = {
             grid: 'autoplace'
         }),
         require('postcss-sort-media-queries')({
-            sort: 'mobile-first', // Сортировка в порядке mobile-first
+            sort: 'mobile-first', 
         }),
         require('cssnano')({
             preset: [

@@ -14,7 +14,7 @@ const PATHS = {
     services: 'services'
 };
 
-// Автоматическое добавление EJS файлов. И преобразование их в html
+
 const ejsFiles = fs.readdirSync(`${PATHS.src}`).filter(file => file.endsWith('.ejs'));
 
 const htmlPlugins = ejsFiles.map(file => {
@@ -88,7 +88,7 @@ module.exports = {
                                         grid: 'autoplace'
                                     }),
                                     require('postcss-sort-media-queries')({
-                                        sort: 'mobile-first', // Сортировка в порядке mobile-first
+                                        sort: 'mobile-first', 
                                     }),
                                     require('cssnano')({
                                         preset: [
@@ -111,7 +111,7 @@ module.exports = {
                 ]
             },
             {
-                test: /\.(png|jpe?g|gif|webp)$/i,
+                test: /\.(png|jpe?g|gif|webp|svg)$/i,
                 type: 'asset',
                 generator: {
                     filename: `${PATHS.assets}img/[name][ext]`
@@ -134,7 +134,7 @@ module.exports = {
                     options: {
                         plugins: [
                             ['imagemin-gifsicle', { interlaced: true }],
-                            ['imagemin-mozjpeg', { quality: 60 }], // Оптимизация JPEG
+                            ['imagemin-mozjpeg', { quality: 60 }], 
                             ['imagemin-optipng', { optimizationLevel: 5 }]
                         ],
                     },
@@ -145,7 +145,7 @@ module.exports = {
                     implementation: ImageMinimizerPlugin.imageminGenerate,
                     options: {
                         plugins: [
-                            ['imagemin-webp', { quality: 75 }],// Оптимизация WebP
+                            ['imagemin-webp', { quality: 60 }],
                         ],
                     },
                 },
